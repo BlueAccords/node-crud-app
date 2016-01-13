@@ -34,4 +34,17 @@ router.post('/pokemon', function(req, res){
 	});
 });
 
+// handle get requests to pokemon's individual pages.
+// gets id from url and then queries the database for the pokemon 
+// data and sends it to the view.
+router.get('/pokemon/:id', function(req, res){
+	var query = {"_id": req.params.id};
+	Pokemon.findOne(query, function(err, pokemon){
+		console.log(pokemon);
+		res.render('pokemon',
+			{title: 'Pokemon API - ' + pokemon.name,
+			pokemon: pokemon});
+	});
+});
+
 module.exports = router;
