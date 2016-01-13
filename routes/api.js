@@ -4,7 +4,7 @@ var router = express.Router();
 // Getting model from mongoose db.
 // model pokemond efined in database.js
 var mongoose = require('mongoose');
-var pokemon = mongoose.model('pokemon');
+var Pokemon = mongoose.model('pokemon');
 
 
 // routes =======================================================
@@ -13,7 +13,7 @@ var pokemon = mongoose.model('pokemon');
 // becomes /api/pokemon
 router.get('/pokemon', function(req, res){
 	// function finds all items from the mongo collection.
-	pokemon.find(function(err, pkmn){
+	Pokemon.find(function(err, pkmn){
 		console.log(pkmn);
 		res.render('api',
 			{title: 'Pokemon API',
@@ -21,10 +21,17 @@ router.get('/pokemon', function(req, res){
 	});
 });
 
-// handle creation of pokemon
+// handle creation of pokemon from submitted form.
 router.post('/pokemon', function(req, res){
-	
-	res.redirect('/api/pokemon');
+	new Pokemon({
+		num: req.body.num,
+		type: req.body.type,
+		name: req.body.name
+	})
+	.save(function(err, pokemon){
+		console.log(pokemon);
+		res.redirect('/api/pokemon')
+	});
 });
 
 module.exports = router;
