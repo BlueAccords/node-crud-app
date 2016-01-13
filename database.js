@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema	 = mongoose.Schema;
 
 var Pokemon = new Schema({
-		nationalNo: Number,
+		num: Number,
 		type: [String],
 		name: String,
 		species: String,

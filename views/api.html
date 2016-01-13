@@ -15,8 +15,32 @@
 				<label for="name">Name</label>
 				<input type="text" name="name" class="form-control" id="name" required>
 			</div>
+			<div class="form-group">
+				<label for="num">No.</label>
+				<input type="number" name="num" class="form-control" id="num">
+			</div>
+			<div class="form-group">
+				<label for="type">Type</label>
+				<input type="text" name="type" class="form-control" id="type">
+			</div>
 			<button class="btn btn-default" type="submit">Save</button>
 		</form>
+
+	<div class="pokemon-list">
+		<h2>Pokedex</h2>
+		<br>
+
+		{% for item in pokemon %}
+		<div class="pokemon-info">
+			<ul>
+				<li><span class="info-label">Name </span>{{ item.name }}</li>
+				<li><span class="info-label">No. </span>{{ item.num }}</li>
+				<li><span class="info-label">Type: </span>{{ item.type }}</li>
+			</ul>
+		</div>
+		{% endfor %}
+	</div>
+
 	</div>
 
 {% endblock %}

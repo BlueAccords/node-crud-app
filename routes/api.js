@@ -21,8 +21,9 @@ router.get('/pokemon', function(req, res){
 	});
 });
 
+// handle creation of pokemon
 router.post('/pokemon', function(req, res){
-	console.log(req.body.name);
+	
 	res.redirect('/api/pokemon');
 });
 
