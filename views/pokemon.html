@@ -6,28 +6,27 @@
 {% block content %}
 
 <div class="container">
-	<h1>{{ title }}</h1>
+	<h1><a href="/api/pokemon">{{ title }}</a></h1>
 
 	<br>
-	<h2>{{ pokemon.name }}</h2>
-	<h3 class="pokemon-name">
-		<a href="pokemon/{{pokemon.id}}">{{ item.name }}</a>
-	</h3>
-	<span class="info-label">No. </span><h6>{{ item.num }}</h6>
-	<span class="info-label">Type: </span><h6>{{ item.type }}</h6>
+	<h3>{{ pokemon.name }}</h3>
+	<h4><span class="info-label">No. </span>{{ pokemon.num }}</h4>
+	<h4><span class="info-label">Type: </span>{{ pokemon.type }}</h4>
 	<h2>Edit Information</h2>
 	<form action="/api/pokemon/{{pokemon.id}}?_method=PUT" method="post">
 		<div class="form-group">
-			<label for="name">{{ pokemon.name }}</label>
-			<input type="text" name="name" class="form-control" id="name"required>
+			<label for="name">Name</label>
+			<input type="text" name="name" class="form-control" id="name" placeholder = "{{pokemon.name}}">
 		</div>
 		<div class="form-group">
-			<label for="num">{{ pokemon.num }}</label>
-			<input type="number" name="num" class="form-control" id="num">
+			<label for="num">No.</label>
+			<input type="number" name="num" class="form-control" id="num"
+			placeholder="{{pokemon.num}}">
 		</div>
 		<div class="form-group">
-			<label for="type">{{ pokemon.type }}</label>
-			<input type="text" name="type" class="form-control" id="type">
+			<label for="type">Type</label>
+			<input type="text" name="type" class="form-control" id="type"
+			placeholder="{{pokemon.type}}">
 		</div>
 		<button class="btn btn-default" type="submit">Update</button>
 	</form>

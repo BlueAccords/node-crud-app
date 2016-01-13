@@ -10,7 +10,7 @@
 		<p>Welcome to {{ title }}</p>
 		<br>
 		<h1>Create a new Pokemon!</h1>
-		<form method="post" action="/api/pokemon" class="form-inline">
+		<form method="post" action="/api/pokemon">
 			<div class="form-group">
 				<label for="name">Name</label>
 				<input type="text" name="name" class="form-control" id="name" required>
@@ -33,7 +33,7 @@
 		{% for item in pokemon %}
 		<div class="pokemon-info">
 			<ul>
-				<h3 class="pokemon-name"><a href="pokemon/{{pokemon.id}}">{{ item.name }}</a></h3>
+				<h3 class="pokemon-name"><a href="pokemon/{{item.id}}">{{ item.name }}</a></h3>
 				<li><span class="info-label">No. </span>{{ item.num }}</li>
 				<li><span class="info-label">Type: </span>{{ item.type }}</li>
 			</ul>

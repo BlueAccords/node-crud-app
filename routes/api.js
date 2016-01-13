@@ -47,4 +47,30 @@ router.get('/pokemon/:id', function(req, res){
 	});
 });
 
+// handle put requests to update pokemon information on 
+// pokemon's individual pages.
+router.put('/pokemon/:id', function(req, res){
+	var query = {"_id": req.params.id};
+	var update = {
+			name: req.body.name,
+			num: req.body.num,
+			type: req.body.type};
+	var options = {new: true};
+	Pokemon.findOneAndUpdate(query, update, options, function(err, pokemon){
+		console.log(pokemon);
+		res.render('pokemon',
+			{title: 'Pokemon API - ' + pokemon.name, pokemon: pokemon});
+	})
+});
+
+// handle delete requests to delete pokemon from db
+// on pokemon's individual pages.
+router.delete('/pokemon/:id', function(req, res){
+	var query = {"_id": req.params.id};
+	Pokemon.findOneAndRemove(query, function(err, pokemon){
+		console.log(pokemon);
+		res.redirect('/api/pokemon');
+	});
+});
+
 module.exports = router;
